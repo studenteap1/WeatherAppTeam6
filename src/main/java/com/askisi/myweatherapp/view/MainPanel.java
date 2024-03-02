@@ -16,11 +16,12 @@ public class MainPanel extends JFrame {
 
         // Create a JPanel for the top section
         JPanel topPanel = new JPanel(new BorderLayout());
-
+        setLocation(800, 200);
+        setPreferredSize(new Dimension(500,400));
 
         // Create a JTextField and a JButton
         JTextField textField = new JTextField();
-        JButton button = new JButton("Search");
+        JButton button = new JButton("Search by City");
         JPanel gridPanel = new JPanel(new GridLayout(5, 1));
         button.addActionListener(e -> {
             try {
@@ -39,10 +40,17 @@ public class MainPanel extends JFrame {
 
 
         // Add buttons to the grid panel
-        for (int i = 1; i <= 4; i++) {
-            JButton gridButton = new JButton("Button " + i);
+//        for (int i = 1; i <= 4; i++) {
+            JButton gridButton = new JButton("Προβολή Λίστας Πόλεων");
             gridPanel.add(gridButton);
-        }
+            JButton gridButton1 = new JButton("Προβολή Λίστας Ημερομηνιών για Πόλη");
+            gridPanel.add(gridButton1);
+            JButton gridButton2 = new JButton("Προβολή Στατιστικών Δεδομένων Πόλεων");
+            gridPanel.add(gridButton2);
+            JButton gridButton3 = new JButton("Έξοδος");
+            gridPanel.add(gridButton3);
+//        }
+           
 
         // Add the top panel and the grid panel to the frame
         this.add(topPanel, BorderLayout.NORTH);
