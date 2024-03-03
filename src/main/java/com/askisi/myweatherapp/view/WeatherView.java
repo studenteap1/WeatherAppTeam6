@@ -9,7 +9,7 @@ public class WeatherView extends JDialog {
     public WeatherView(JFrame parent,WeatherApi weather){
         super(parent, "Weather Dialog", true);
         setLocationRelativeTo(parent);
-        this.setSize(300,200);
+        this.setSize(800,300);
         JPanel panel=new JPanel(new GridLayout());
         JLabel tempLabel = new JLabel("Temperature: " + weather.getTempC() + "°C");
         JLabel humidityLabel = new JLabel("Humidity: " + weather.getHumidity() + "%");
