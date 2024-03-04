@@ -10,6 +10,7 @@ public class WeatherApi {
     private String windspeedKmph;
     private String uvIndex;
     private String weatherDesc;
+    private String city;
 
     // Constructor, getters, and setters
 
@@ -57,5 +58,13 @@ public class WeatherApi {
 
     public void setWeatherDesc(String weatherDesc) {
         this.weatherDesc = weatherDesc;
+    }
+    
+    public String getCity() {
+        return city;
+    }
+    
+    public void setCity(String city){
+        this.city = city;
     }
 }

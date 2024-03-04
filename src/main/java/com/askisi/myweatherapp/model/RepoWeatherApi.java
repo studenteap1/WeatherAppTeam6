@@ -50,6 +50,15 @@ public class RepoWeatherApi {
                     weather.setWindspeedKmph(object.get("windspeedKmph").getAsString());
                     weather.setUvIndex(object.get("uvIndex").getAsString());
 
+                    // Navigate through the JSON structure to extract the value
+                    String areaValue = rootElement.getAsJsonObject()
+                                            .getAsJsonArray("nearest_area").get(0)
+                                            .getAsJsonObject().getAsJsonArray("areaName").get(0)
+                                            .getAsJsonObject().get("value").getAsString();
+
+                    // Print the extracted value
+                    weather.setCity(areaValue);
+                    
                     if(object.get("weatherDesc").isJsonArray()){
                         // Get the 'weatherDesc' array
                         JsonArray weatherDescArray = object.get("weatherDesc").getAsJsonArray();

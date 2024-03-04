@@ -6,9 +6,12 @@ import com.askisi.myweatherapp.model.WeatherApi;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import com.askisi.myweatherapp.controller.WeatherRepo;
 
 public class MainPanel extends JFrame {
     public MainPanel() {
+        
+        WeatherRepo controller = new WeatherRepo();
 
         this.setTitle("WEATHER APP");
         RepoWeatherApi repoWeatherApi = new RepoWeatherApi();
@@ -21,11 +24,13 @@ public class MainPanel extends JFrame {
 
         // Create a JTextField and a JButton
         JTextField textField = new JTextField();
-        JButton button = new JButton("Search by City");
+        JButton searchButton = new JButton("Search by City");
         JPanel gridPanel = new JPanel(new GridLayout(5, 1));
-        button.addActionListener(e -> {
+        searchButton.addActionListener(e -> {
             try {
-                WeatherView weatherView =new WeatherView(this,repoWeatherApi.getWeather(textField.getText().trim().strip()));
+                WeatherApi weather = repoWeatherApi.getWeather(textField.getText().trim().strip());
+                controller.insertData(weather.getCity());
+                WeatherView weatherView =new WeatherView(this,weather);
                 weatherView.setVisible(true);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
@@ -34,7 +39,7 @@ public class MainPanel extends JFrame {
 
         // Add the JTextField and JButton to the top panel
         topPanel.add(textField, BorderLayout.CENTER);
-        topPanel.add(button, BorderLayout.EAST);
+        topPanel.add(searchButton, BorderLayout.EAST);
 
         // Create a JPanel for the grid layout
 

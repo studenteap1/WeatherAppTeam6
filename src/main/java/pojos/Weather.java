@@ -5,6 +5,7 @@
 package pojos;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,7 +31,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Weather.findByHumidity", query = "SELECT w FROM Weather w WHERE w.humidity = :humidity"),
     @NamedQuery(name = "Weather.findByWindspeed", query = "SELECT w FROM Weather w WHERE w.windspeed = :windspeed"),
     @NamedQuery(name = "Weather.findByUv", query = "SELECT w FROM Weather w WHERE w.uv = :uv"),
-    @NamedQuery(name = "Weather.findByWeatherdesk", query = "SELECT w FROM Weather w WHERE w.weatherdesk = :weatherdesk")})
+    @NamedQuery(name = "Weather.findByWeatherdesk", query = "SELECT w FROM Weather w WHERE w.weatherdesk = :weatherdesk"),
+    @NamedQuery(name = "Weather.findByWeaterdate", query = "SELECT w FROM Weather w WHERE w.weaterdate = :weaterdate")})
 public class Weather implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,6 +50,9 @@ public class Weather implements Serializable {
     private String uv;
     @Column(name = "WEATHERDESK")
     private String weatherdesk;
+    @Column(name = "WEATERDATE")
+    @Temporal(TemporalType.DATE)
+    private Date weaterdate;
     @JoinColumn(name = "CITY_ID", referencedColumnName = "ID")
     @ManyToOne
     private City cityId;
@@ -103,6 +110,14 @@ public class Weather implements Serializable {
 
     public void setWeatherdesk(String weatherdesk) {
         this.weatherdesk = weatherdesk;
+    }
+
+    public Date getWeaterdate() {
+        return weaterdate;
+    }
+
+    public void setWeaterdate(Date weaterdate) {
+        this.weaterdate = weaterdate;
     }
 
     public City getCityId() {
