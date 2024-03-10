@@ -5,6 +5,9 @@
     <class>pojos.City</class>
     <class>pojos.Weather</class>
     <class>pojos.Favorite</class>
+    <class>Pojos.Weather</class>
+    <class>Pojos.Favorite</class>
+    <class>Pojos.City</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/WeatherDB"/>
       <property name="javax.persistence.jdbc.user" value="userdb10"/>

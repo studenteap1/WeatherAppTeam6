@@ -1,17 +1,21 @@
 package com.askisi.myweatherapp.view;
 
+import Pojos.City;
 import com.askisi.myweatherapp.model.RepoWeatherApi;
 import com.askisi.myweatherapp.model.WeatherApi;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import com.askisi.myweatherapp.controller.WeatherRepo;
+import com.askisi.myweatherapp.controller.CityRepo;
+import gsonModels.WeatherData;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainPanel extends JFrame {
     public MainPanel() {
         
-        WeatherRepo controller = new WeatherRepo();
+        CityRepo controller = new CityRepo();
 
         this.setTitle("WEATHER APP");
         RepoWeatherApi repoWeatherApi = new RepoWeatherApi();
@@ -27,14 +31,12 @@ public class MainPanel extends JFrame {
         JButton searchButton = new JButton("Search by City");
         JPanel gridPanel = new JPanel(new GridLayout(5, 1));
         searchButton.addActionListener(e -> {
-            try {
-                WeatherApi weather = repoWeatherApi.getWeather(textField.getText().trim().strip());
-                controller.insertData(weather.getCity());
-                WeatherView weatherView =new WeatherView(this,weather);
-                weatherView.setVisible(true);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            WeatherData weather = repoWeatherApi.getWeather(textField.getText().trim().strip());
+            String cityName=weather.getNearest_area().get(0).getAreaName().get(0).getValue();
+            controller.insertData(cityName);
+            City city = controller.getCityByName(cityName);
+            WeatherView weatherView =new WeatherView(this,weather,city);
+            weatherView.setVisible(true);
         });
 
         // Add the JTextField and JButton to the top panel
@@ -53,6 +55,12 @@ public class MainPanel extends JFrame {
             JButton gridButton2 = new JButton("Προβολή Στατιστικών Δεδομένων Πόλεων");
             gridPanel.add(gridButton2);
             JButton gridButton3 = new JButton("Έξοδος");
+            gridButton3.addActionListener((new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(EXIT_ON_CLOSE);
+                }
+            }));
             gridPanel.add(gridButton3);
 //        }
            
