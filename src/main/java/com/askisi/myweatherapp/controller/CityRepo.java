@@ -4,6 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import Pojos.City;
+import java.util.List;
 
 public class CityRepo {
     private EntityManagerFactory entityManagerFactory;
@@ -38,6 +39,13 @@ public class CityRepo {
         Query query = entityManager.createQuery("SELECT e FROM City e WHERE e.name = :name");
         query.setParameter("name", cityName);
         return (City) query.getSingleResult(); // Assuming there's only one city with the given name
+    }
+    
+    public List<City> getAllCities() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createQuery("SELECT c FROM City c");
+        List<City> cities = query.getResultList();
+        return cities;
     }
     
     public void close() {

@@ -49,6 +49,10 @@ public class MainPanel extends JFrame {
         // Add buttons to the grid panel
 //        for (int i = 1; i <= 4; i++) {
             JButton gridButton = new JButton("Προβολή Λίστας Πόλεων");
+            gridButton.addActionListener(e -> {
+            CityDataPanel cityPanel=new CityDataPanel(this);
+            cityPanel.setVisible(true);
+        });
             gridPanel.add(gridButton);
             JButton gridButton1 = new JButton("Προβολή Λίστας Ημερομηνιών για Πόλη");
             gridPanel.add(gridButton1);
