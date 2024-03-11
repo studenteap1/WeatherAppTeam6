@@ -1,4 +1,4 @@
-package com.askisi.myweatherapp.model;
+package com.askisi.myweatherapp.repositories;
 
 import com.google.gson.Gson;
 

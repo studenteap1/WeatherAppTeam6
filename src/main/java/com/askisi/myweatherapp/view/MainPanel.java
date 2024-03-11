@@ -1,13 +1,13 @@
 package com.askisi.myweatherapp.view;
 
 import Pojos.City;
-import com.askisi.myweatherapp.model.RepoWeatherApi;
-import com.askisi.myweatherapp.model.WeatherApi;
+import com.askisi.myweatherapp.repositories.RepoWeatherApi;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import com.askisi.myweatherapp.controller.CityRepo;
+import com.askisi.myweatherapp.controller.FavoriteRepo;
 import gsonModels.WeatherData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +35,8 @@ public class MainPanel extends JFrame {
             String cityName=weather.getNearest_area().get(0).getAreaName().get(0).getValue();
             controller.insertData(cityName);
             City city = controller.getCityByName(cityName);
+            FavoriteRepo favoriteRepo=new FavoriteRepo();
+            favoriteRepo.incrementOrInsertFavorite(city);
             WeatherView weatherView =new WeatherView(this,weather,city);
             weatherView.setVisible(true);
         });
@@ -54,10 +56,7 @@ public class MainPanel extends JFrame {
             cityPanel.setVisible(true);
         });
             gridPanel.add(gridButton);
-            JButton gridButton1 = new JButton("Προβολή Λίστας Ημερομηνιών για Πόλη");
-            gridPanel.add(gridButton1);
-            JButton gridButton2 = new JButton("Προβολή Στατιστικών Δεδομένων Πόλεων");
-            gridPanel.add(gridButton2);
+           
             JButton gridButton3 = new JButton("Έξοδος");
             gridButton3.addActionListener((new ActionListener() {
                 @Override

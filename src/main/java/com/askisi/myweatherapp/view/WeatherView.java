@@ -3,7 +3,7 @@ package com.askisi.myweatherapp.view;
 import Pojos.City;
 import Pojos.Weather;
 import com.askisi.myweatherapp.controller.WeatherRepo;
-import com.askisi.myweatherapp.model.WeatherApi;
+import com.askisi.myweatherapp.repositories.WeatherApi;
 import gsonModels.HourlyInfo;
 import gsonModels.WeatherData;
 import gsonModels.WeatherInfo;
