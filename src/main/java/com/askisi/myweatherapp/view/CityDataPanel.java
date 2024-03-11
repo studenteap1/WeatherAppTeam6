@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.askisi.myweatherapp.view;
 
 import javax.swing.JDialog;
@@ -17,10 +13,6 @@ import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
-/**
- *
- * @author litos
- */
 public class CityDataPanel extends JDialog{
     
     private JComboBox<String> cityComboBox;

@@ -5,10 +5,6 @@ import gsonModels.Astronomy;
 import gsonModels.HourlyInfo;
 import java.util.List;
 
-/**
- *
- * @author litos
- */
 public class WeatherInfo {
     private List<Astronomy> astronomy;
     private String avgtempC;
