@@ -49,22 +49,6 @@ public class WeatherView extends JDialog {
             HourlyInfo hourlyData = weather.getWeather().get(i).getHourly().get(0); // Assuming hourly data is available
             
             
-//            // Add labels for weather data
-//            JLabel dateLabel = new JLabel(weatherInfo.getDate());
-//            JLabel tempLabel = new JLabel(hourlyData.getTempC());
-//            JLabel humidityLabel = new JLabel(hourlyData.getHumidity());
-//            JLabel windspeedLabel = new JLabel(hourlyData.getWindspeedKmph());
-//            JLabel uvIndexLabel = new JLabel(hourlyData.getUvIndex());
-//            JLabel weatherDescLabel = new JLabel(hourlyData.getWeatherDesc().get(0).getValue());
-//
-//            // Add labels to the panel
-//            panel.add(dateLabel);
-//            panel.add(tempLabel);
-//            panel.add(humidityLabel);
-//            panel.add(windspeedLabel);
-//            panel.add(uvIndexLabel);
-//            panel.add(weatherDescLabel);
-
             // Add text fields for editing
             JLabel dateLabel = new JLabel(weatherInfo.getDate());
             JTextField tempTextField = new JTextField(hourlyData.getTempC());

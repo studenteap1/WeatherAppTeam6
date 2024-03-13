@@ -45,11 +45,10 @@ public class MainPanel extends JFrame {
         topPanel.add(textField, BorderLayout.CENTER);
         topPanel.add(searchButton, BorderLayout.EAST);
 
-        // Create a JPanel for the grid layout
+        
 
 
         // Add buttons to the grid panel
-//        for (int i = 1; i <= 4; i++) {
             JButton gridButton = new JButton("Προβολή Λίστας Πόλεων");
             gridButton.addActionListener(e -> {
             CityDataPanel cityPanel=new CityDataPanel(this);
